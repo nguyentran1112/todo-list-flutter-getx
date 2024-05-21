@@ -2,9 +2,10 @@ import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todos/model/item_model.dart';
+import 'package:todos/widgets/to_do_list_item/item_controller.dart';
 
 class ItemView extends StatelessWidget {
-  final Item item;
+  final ItemController item;
 
   const ItemView({super.key, required this.item});
 
@@ -14,7 +15,7 @@ class ItemView extends StatelessWidget {
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 180),
-              transform: item.controller.isOpenMenu.value
+              transform: item.isOpenMenu.value
                   ? Matrix4.translationValues(-90, 0, 0)
                   : Matrix4.identity(),
               child: Container(
@@ -38,7 +39,7 @@ class ItemView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            item.title,
+                            item.title.value,
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 16),
                           ),
@@ -53,7 +54,7 @@ class ItemView extends StatelessWidget {
                     IconButton(
                       alignment: Alignment.centerRight,
                       onPressed: () {
-                        item.controller.toggleOpenMenu();
+                        item.toggleOpenMenu();
                       },
                       icon: const Icon(
                         Icons.more_vert,
@@ -70,7 +71,7 @@ class ItemView extends StatelessWidget {
               bottom: 0,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 180),
-                transform: item.controller.isOpenMenu.value
+                transform: item.isOpenMenu.value
                     ? Matrix4.identity()
                     : Matrix4.translationValues(90, 0, 0),
                 child: Row(
