@@ -25,6 +25,7 @@ class ListItemView extends StatelessWidget {
                   final item = listItemController.todos[index];
                   return ItemView(
                     item: item,
+                    list: listItemController
                   );
                 },
               ),

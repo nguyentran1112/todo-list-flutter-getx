@@ -2,12 +2,14 @@ import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todos/model/item_model.dart';
+import 'package:todos/widgets/to_do_list/list_item_controller.dart';
 import 'package:todos/widgets/to_do_list_item/item_controller.dart';
 
 class ItemView extends StatelessWidget {
   final ItemController item;
+  final ListItemController list;
 
-  const ItemView({super.key, required this.item});
+  const ItemView({super.key, required this.item, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,7 @@ class ItemView extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        // Handle delete action
+                        list.removeTodo(item.title.value);
                       },
                       icon: const Icon(EneftyIcons.trash_outline),
                       color: Colors.red,

@@ -7,4 +7,8 @@ class ListItemController extends GetxController {
   void addTodo(String title) {
     todos.add(ItemController(title));
   }
+
+  void removeTodo(String title) {
+    todos.removeWhere((element) => element.title.value == title);
+  }
 }
